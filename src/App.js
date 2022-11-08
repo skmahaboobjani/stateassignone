@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+
+ import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { useState } from "react";
 
 function App() {
+
+  // const heading=`# this is heading`
+
+ 
+  const [mark, setmark]=useState('')
+ 
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+  
+<div>
+  <h1 style={{textAlign:'center'}}>Markdown editor</h1>
+    <div style={{display:'flex' , textAlign:'center', margin: 'auto', padding: '10px'}}>
+      
+
+  
+   
+    <textarea  style={{backgroundColor:'black', color:'white', fontSize:'15px' , width:'1000px'}}  rows='40' cols='90'  onChange={(e)=>{setmark(e.target.value)}}></textarea>
+   
+   
+    
+    
+
+
+    <div  style={{backgroundColor:'brown',width:'2000px'}} >
+            <h2>output</h2>
+            <ReactMarkdown children={mark} remarkPlugins={[remarkGfm]}></ReactMarkdown>
+          
+        </div>
+    
+    </div>
     </div>
   );
 }
